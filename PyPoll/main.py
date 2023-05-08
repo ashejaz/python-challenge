@@ -33,24 +33,28 @@ with open(csvpath) as csvfile:
         # retreiving candidate name from column 3
         candidate_name = row[2]
 
-        # Add candidate to list of candidates if not already included
+        # checking if candidate not already in list
         if candidate_name not in candidates:
+            # adding candidates to list
             candidates.append(candidate_name)
             votes_by_candidate[candidate_name] = 0
 
-        # Increment candidate's vote count
+        # adding 1 to candidate vote count for each row in data set
         votes_by_candidate[candidate_name] += 1
 
-
+# selecting all candidates in candidate list
 for candidate in candidates:
+    # assigning total votes per candidate
     votes = votes_by_candidate[candidate]
+    # calculating % votes
     vote_percent = round((votes / total_votes) * 100, 3)
-
+ # calculating winner
     if votes > winner_votes:
         winner_votes = votes
         winner = candidate
-
-results = (
+ 
+ # defining results
+    results = (
     "Election Results\n"
     "-------------------------\n"
     f"Total Votes: {total_votes}\n"
@@ -61,4 +65,5 @@ results = (
     "-------------------------\n"
 )
 
+# printing results to terminal
 print(results)
