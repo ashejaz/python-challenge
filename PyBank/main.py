@@ -1,4 +1,4 @@
-# import modules
+# importing modules
 import os
 import csv
 
@@ -32,7 +32,7 @@ with open(csvpath) as csvfile:
         # adding 1 to total number of months for each row in dataset
         total_months += 1
 
-        # adding the profit/loss to net total
+        # adding the profit/loss from column 2 to net total
         net_profitloss += int(row[1])
 
         # defining profit/loss for current month
