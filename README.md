@@ -4,7 +4,7 @@ For this project, python was used to read and analyse data from, and export data
 The skills demonstrated include: for loops, if statements, dictionaries, lists, and f-strings.
 
 # PyBank
-Financial data consisting of "Date" and "Profit/Losses" columns was analysed to calculate the following:
+Financial data consisting of columns "Date" and "Profit/Losses" was analysed to calculate the following:
 - The total number of months included in the dataset
 - The net total amount of Profit/Losses over the entire period
 - The changes in Profit/Losses over the entire period, and the average of those changes
@@ -17,7 +17,7 @@ The python script used is titled 'main.py'.
 The results are contained in the 'financial-analysis.txt' file located in the 'analysis' folder.
 
 # PyPoll
-Election data consisting of "Voter ID", "County", and "Candidate" columns was analysed to calculate the following:
+Election data consisting of columns "Voter ID", "County", and "Candidate" was analysed to calculate the following:
 - The total number of votes cast
 - The percentage of votes each candidate won
 - The total number of votes each candidate won
