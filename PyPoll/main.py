@@ -13,9 +13,10 @@ txtpath = os.path.join(".", "analysis", "election_results.txt")
 total_votes = 0
 winner = ""
 winner_votes = 0
- # 
+# creating list of candidates
 candidates = []
-votes_by_candidate = {}
+# creating candidate dictionary
+votes_per_candidate = {}
 
 # opening csv file
 with open(csvpath) as csvfile:
@@ -37,33 +38,37 @@ with open(csvpath) as csvfile:
         if candidate_name not in candidates:
             # adding candidates to list
             candidates.append(candidate_name)
-            votes_by_candidate[candidate_name] = 0
+            votes_per_candidate[candidate_name] = 0
 
         # adding 1 to candidate vote count for each row in data set
-        votes_by_candidate[candidate_name] += 1
+        votes_per_candidate[candidate_name] += 1
 
-# selecting all candidates in candidate list
+# formatting results
+results = "Election Results\n"
+results += "-------------------------\n"
+ # defining results for total votes
+results += f"Total Votes: {total_votes}\n"
+results += "-------------------------\n"
+# looping through candidates in candidate list
 for candidate in candidates:
-    # assigning total votes per candidate
-    votes = votes_by_candidate[candidate]
+    # assigning total votes to each candidate
+    votes = votes_per_candidate[candidate]
     # calculating % votes
     vote_percent = round((votes / total_votes) * 100, 3)
- # calculating winner
+    # adding every candidates name, % of votes and total votes to results list
+    results += f"{candidate}: {vote_percent}% ({votes})\n"
+    # calculating winner
     if votes > winner_votes:
         winner_votes = votes
         winner = candidate
- 
- # defining results
-    results = (
-    "Election Results\n"
-    "-------------------------\n"
-    f"Total Votes: {total_votes}\n"
-    "-------------------------\n"
-    f"{candidate}: {vote_percent}% ({votes})\n"
-    "-------------------------\n"
-    f"Winner: {winner}\n"
-    "-------------------------\n"
-)
+# adding winner name to results list
+results += "-------------------------\n"
+results += f"Winner: {winner}\n"
+results += "-------------------------\n"
 
 # printing results to terminal
 print(results)
+
+# printing results to output file
+with open(txtpath, "w") as election_results:
+    election_results.write(results)
